@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>
+            Registros Guardados
+        </title>
+    </h:head>
+        <h1>Contactos Guardados</h1>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:dataTable value="#{agenda.listaContacto}" var="contactos" border="3" rendered="#{not empty agenda.listaContacto eq true}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                                    <h:outputText value="#{contactos.nombre}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Número"/>
+                            </f:facet>
+                                <h:outputText value="#{contactos.numero}"/>
+                        </h:column>
+
+                        <h:column>
+                            <h:commandLink value="Eliminar" actionListener="#{agenda.borrarContacto(contactos)}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGrid>
+
+                <h:commandButton value="Volver" action="index"/>
+            </h:form>
+</f:view>
+</html>
